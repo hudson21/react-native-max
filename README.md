@@ -38,4 +38,6 @@ const App = props => {
 - Have installed Android Studio with the following plugins:
   1. Latest two versions of Android
   2. Android SDK Build-Tools, Android Emulator, Androind SDK Platform-Tools, Google Play Services, Intes X86 Emulator Accelerator (HAXM installer)
-  3. 
+
+# Module 2 (React Native Basics)
+- [Flexbox Cheat Sheet](https://reactnative.dev/docs/flexbox)
