@@ -1,12 +1,14 @@
 # Module 1 (Getting Started)
 
 ### What is React Native
+
 - It is a collection of special React Components
 - Components compiled to Native Widgets
 - Native Platform APIs exposed to JavaScript(Camera functionalities, etc...)
 - Connects JavaScript and Native Platform Code
 
 ### How React Native works behind the scenes
+
 ```
 const App = props => {
   return(
@@ -18,6 +20,7 @@ const App = props => {
 ```
 
 ### Expo or React Native CLI ?
+
 - Expo CLI/Tool
   1. Third Party Service (Free!)
   2. Managed App Development
@@ -28,16 +31,21 @@ const App = props => {
   2. Bare-bone Development (only a Basic Setup)
   3. Almost no Convenience or Utility Features
   4. Full Flexibility: Integrate with any Native Code
-- https://expo.io 
+- https://expo.io
 
 ### Command to create a Expo React Native Project
+
 - expo init name-of-the-project
 
 ### Running App on Android Emulator
+
 - https://docs.expo.io/workflow/android-studio-emulator/?redirected
 - Have installed Android Studio with the following plugins:
   1. Latest two versions of Android
   2. Android SDK Build-Tools, Android Emulator, Androind SDK Platform-Tools, Google Play Services, Intes X86 Emulator Accelerator (HAXM installer)
 
 # Module 2 (React Native Basics)
+
 - [Flexbox Cheat Sheet](https://reactnative.dev/docs/flexbox)
+- FlatList is for rendering array of items where you dont know how many items are going to be inside of the array. ScrollView is better if you know the exact amount of items
+  to be rendered on the View
