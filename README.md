@@ -49,3 +49,14 @@ const App = props => {
 - [Flexbox Cheat Sheet](https://reactnative.dev/docs/flexbox)
 - FlatList is for rendering array of items where you dont know how many items are going to be inside of the array. ScrollView is better if you know the exact amount of items
   to be rendered on the View
+- [React Native Core Components](https://reactnative.dev/docs/components-and-apis)
+
+### Touchable Components
+
+1. TouchableOpacity
+2. TouchableHighlight
+3. TouchableNativeFeedback
+4. TouchableWithoutFeedback
+
+# Module 3 (Debugging React Native Apps)
+
