@@ -60,3 +60,14 @@ const App = props => {
 
 # Module 3 (Debugging React Native Apps)
 
+### What to Debug?
+
+- Remote Debugger in Expo: Ctrl + M
+- react native debugger
+
+```
+In your project
+yarn add react-devtools@^3 --dev
+then add "devtools": "react-devtools" to script in package.json
+and try yarn devtools
+```
