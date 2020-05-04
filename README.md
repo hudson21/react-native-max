@@ -71,3 +71,8 @@ yarn add react-devtools@^3 --dev
 then add "devtools": "react-devtools" to script in package.json
 and try yarn devtools
 ```
+
+# Module 4 (Components, Styling and Layouts)
+
+- [Official Color References](https://reactnative.dev/docs/colors)
+-
