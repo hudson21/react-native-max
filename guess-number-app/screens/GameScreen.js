@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import React, { useState, useRef } from "react";
+import { View, Text, StyleSheet, Button, Alert } from "react-native";
 
 // Components
 import NumberContainer from "../components/NumberContainer";
@@ -21,13 +21,40 @@ const GameScreen = ({ userChoice }) => {
     generateRandomBetween(1, 100, userChoice)
   );
 
+  // The values set on the first time will remain the same until they are changed, despite the component re renders one more time
+  const currentLow = useRef(1);
+  const currentHight = useRef(100);
+
+  const nextGuessHandler = (direction) => {
+    if (
+      (direction === "lower" && currentGuest < userChoice) ||
+      (direction === "greater" && currentGuest > userChoice)
+    ) {
+      Alert.alert("Don't lie !", "You know that this is wrong ...", [
+        { text: "Sorry!", style: "cancel" },
+      ]);
+      return;
+    }
+    if (direction === "lower") {
+      currentHight.current = currentGuest;
+    } else {
+      currentLow.current = currentGuest;
+    }
+    const nextNumber = generateRandomBetween(
+      currentLow.current,
+      currentHight.current,
+      currentGuest
+    );
+    setCurrentGuest(nextNumber);
+  };
+
   return (
     <View style={styles.screen}>
       <Text>Opponent's Guess</Text>
       <NumberContainer>{currentGuest}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <Button title="LOWER" onPress={() => {}} />
-        <Button title="GREATER" onPress={() => {}} />
+        <Button title="LOWER" onPress={() => nextGuessHandler("lower")} />
+        <Button title="GREATER" onPress={() => nextGuessHandler("greater")} />
       </Card>
     </View>
   );
