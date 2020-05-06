@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { View, Text, StyleSheet, Button, Alert } from "react-native";
 
 // Components
@@ -16,14 +16,21 @@ const generateRandomBetween = (min, max, exclude) => {
   }
 };
 
-const GameScreen = ({ userChoice }) => {
+const GameScreen = ({ userChoice, onGameOver }) => {
   const [currentGuest, setCurrentGuest] = useState(
     generateRandomBetween(1, 100, userChoice)
   );
+  const [rounds, setRounds] = useState(0);
 
   // The values set on the first time will remain the same until they are changed, despite the component re renders one more time
   const currentLow = useRef(1);
   const currentHight = useRef(100);
+
+  useEffect(() => {
+    if (currentGuest === userChoice) {
+      onGameOver(rounds);
+    }
+  }, [currentGuest, userChoice, onGameOver]);
 
   const nextGuessHandler = (direction) => {
     if (
@@ -46,6 +53,7 @@ const GameScreen = ({ userChoice }) => {
       currentGuest
     );
     setCurrentGuest(nextNumber);
+    setRounds((currentRounds) => currentRounds + 1);
   };
 
   return (
