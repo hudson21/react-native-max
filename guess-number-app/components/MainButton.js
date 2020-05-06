@@ -6,7 +6,7 @@ import Colors from "../constants/colors";
 
 const MainButton = ({ children, onClick }) => {
   return (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity onPress={onClick} activeOpacity={0.5}>
       <View style={styles.button}>
         <Text style={styles.buttonText}>{children}</Text>
       </View>
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     paddingVertical: 12,
     paddingHorizontal: 30,
+    borderRadius: 25,
   },
   buttonText: {
     color: "white",
