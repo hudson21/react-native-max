@@ -75,4 +75,6 @@ and try yarn devtools
 # Module 4 (Components, Styling and Layouts)
 
 - [Official Color References](https://reactnative.dev/docs/colors)
--
+- [List of available icons to use in React Native](https://icons.expo.fyi/)
+- [Native Base UI Library](https://github.com/GeekyAnts/NativeBase)
+- [React Native Elements](https://github.com/react-native-training/react-native-elements)
