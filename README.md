@@ -78,3 +78,5 @@ and try yarn devtools
 - [List of available icons to use in React Native](https://icons.expo.fyi/)
 - [Native Base UI Library](https://github.com/GeekyAnts/NativeBase)
 - [React Native Elements](https://github.com/react-native-training/react-native-elements)
+
+# Module 5 (Responsive & Adaptive User Interfaces and Apps)
