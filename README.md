@@ -80,3 +80,13 @@ and try yarn devtools
 - [React Native Elements](https://github.com/react-native-training/react-native-elements)
 
 # Module 5 (Responsive & Adaptive User Interfaces and Apps)
+
+- In app.json:
+
+```
+"orientation": "portrait", // vertical
+"orientation": "landscape", // horizontal
+"orientation": "default", // It can be use in both directions (vertical and horizontal)
+```
+
+- Naming Conventions in React Native: component.ios.js, component.androind.js
