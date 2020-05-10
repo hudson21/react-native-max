@@ -90,3 +90,5 @@ and try yarn devtools
 ```
 
 - Naming Conventions in React Native: component.ios.js, component.androind.js
+
+# Module 6 (Nagitation with React Navigation [The Meals App])
