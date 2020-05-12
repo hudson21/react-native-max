@@ -96,6 +96,7 @@ and try yarn devtools
 - yarn add @react-navigation/native
 - expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 - yarn add @react-navigation/stack
+- yarn add react-native-screens
 - Navigation Methods
   1. push
   2. pop

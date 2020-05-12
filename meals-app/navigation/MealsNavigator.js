@@ -19,18 +19,23 @@ const Stack = createStackNavigator();
 const MealsNavigator = (props) => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CategoriesScreen">
+      <Stack.Navigator
+        initialRouteName="CategoriesScreen"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor:
+              Platform.OS === "android" ? Colors.primaryColor : "",
+          },
+          headerTintColor:
+            Platform.OS === "android" ? "white" : Colors.primaryColor,
+          mode: "modal",
+        }}
+      >
         <Stack.Screen
           name="CategoriesScreen"
           component={CategoriesScreen}
           options={{
             headerTitle: "Meal Categories",
-            headerStyle: {
-              backgroundColor:
-                Platform.OS === "android" ? Colors.primaryColor : "",
-            },
-            headerTintColor:
-              Platform.OS === "android" ? "white" : Colors.primaryColor,
           }}
         />
         <Stack.Screen
@@ -44,12 +49,6 @@ const MealsNavigator = (props) => {
 
             return {
               headerTitle: selectedCategory.title,
-              headerStyle: {
-                backgroundColor:
-                  Platform.OS === "android" ? Colors.primaryColor : "",
-              },
-              headerTintColor:
-                Platform.OS === "android" ? "white" : Colors.primaryColor,
             };
           }}
         />
