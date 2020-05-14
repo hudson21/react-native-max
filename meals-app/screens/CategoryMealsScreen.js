@@ -12,7 +12,11 @@ const CategoryMealsScreen = (props) => {
     return (
       <MealItem
         title={itemData.item.title}
-        onSelectMeal={() => {}}
+        onSelectMeal={() => {
+          props.navigation.navigate("MealDetailsScreen", {
+            mealId: itemData.item.id,
+          });
+        }}
         duration={itemData.item.duration}
         complexity={itemData.item.complexity}
         affordability={itemData.item.affordability}

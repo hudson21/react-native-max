@@ -97,9 +97,11 @@ and try yarn devtools
 - expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 - yarn add @react-navigation/stack
 - yarn add react-native-screens
+- yarn add @react-navigation/bottom-tabs
 - Navigation Methods
   1. push
   2. pop
   3. replace
   4. goBack
   5. popToTop
+- It helps you to set buttons in your header:expo install react-navigation-header-buttons
