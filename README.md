@@ -105,3 +105,9 @@ and try yarn devtools
   4. goBack
   5. popToTop
 - It helps you to set buttons in your header:expo install react-navigation-header-buttons
+
+### Material Icon Tabs
+
+- yarn add @react-navigation/material-bottom-tabs react-native-paper
+- yarn add @react-navigation/drawer
+- [CreateMaterialTopTabNavigator](https://reactnavigation.org/docs/material-top-tab-navigator/)

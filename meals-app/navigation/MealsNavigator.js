@@ -4,6 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { Ionicons } from "@expo/vector-icons";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
+// Default Styles
+import { DefaultStyles } from "../constants/DefaultStyles";
 
 // Components
 import CategoriesScreen from "../screens/CategoriesScreen";
@@ -11,6 +17,7 @@ import CategoryMealsScreen from "../screens/CategoryMealsScreen";
 import MealDetailsScreen from "../screens/MealDetailsScreen";
 import CustomHeaderButton from "../components/CustomHeaderButton";
 import FavoritesScreen from "../screens/FavoritesScreen";
+import FiltersScreen from "../screens/FiltersScreen";
 
 // Colors
 import Colors from "../constants/Colors";
@@ -20,32 +27,107 @@ import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 const Stack = createStackNavigator();
 
-const Tab = createBottomTabNavigator();
+const Tab =
+  Platform.OS === "android"
+    ? createMaterialBottomTabNavigator()
+    : createBottomTabNavigator();
 
-const MealsFavTabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Meals" component={MealsNavigator} />
-    <Tab.Screen name="Favorites" component={FavoritesScreen} />
+const screenOptions = (route) => ({
+  tabBarLabel: route.name === "Favorites" ? "Favorites" : "Meals",
+  tabBarIcon: (tabInfo) => {
+    if (route.name === "Meals") {
+      return <Ionicons name="ios-restaurant" size={25} color={tabInfo.color} />;
+    }
+    if (route.name === "Favorites") {
+      return <Ionicons name="ios-star" size={25} color={tabInfo.color} />;
+    }
+  },
+  tabBarColor:
+    route.name === "Meals" ? Colors.primaryColor : Colors.accentColor, // This one only applies if the shifting on android is true
+});
+
+const MealsBottomTabNavigatorIOS = () => (
+  <Tab.Navigator
+    screenOptions={({ route }) => screenOptions(route)}
+    tabBarOptions={{
+      activeTintColor: Colors.accentColor,
+    }}
+  >
+    <Tab.Screen name="Meals" component={MealsStackNavigator} />
+    <Tab.Screen name="Favorites" component={FavoritesStackNavigator} />
   </Tab.Navigator>
 );
 
-const MealsNavigator = () => (
+const MealsBottomTabNavigatorAndroid = () => (
+  <Tab.Navigator
+    initialRouteName="Meals"
+    activeColor="white"
+    shifting={true}
+    screenOptions={({ route }) => screenOptions(route)}
+  >
+    <Tab.Screen name="Meals" component={MealsStackNavigator} />
+    <Tab.Screen name="Favorites" component={FavoritesStackNavigator} />
+  </Tab.Navigator>
+);
+
+const FavoritesStackNavigator = () => (
+  <Stack.Navigator screenOptions={DefaultStyles}>
+    <Stack.Screen
+      name="FavoritesScreen"
+      component={FavoritesScreen}
+      options={{
+        headerTitle: " Your Favorites",
+      }}
+    />
+    <Stack.Screen
+      name="MealDetailsScreen"
+      component={MealDetailsScreen}
+      options={(navigationData) => {
+        const mealId = navigationData.route.params.mealId;
+        const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+        return {
+          headerTitle: selectedMeal.title,
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+              <Item
+                title="Favorite"
+                iconName="ios-star"
+                onPress={() => {
+                  console.log("Marked as favorite");
+                }}
+              />
+            </HeaderButtons>
+          ),
+        };
+      }}
+    />
+  </Stack.Navigator>
+);
+
+const MealsStackNavigator = () => (
   <Stack.Navigator
     initialRouteName="CategoriesScreen"
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
-      },
-      headerTintColor:
-        Platform.OS === "android" ? "white" : Colors.primaryColor,
-      mode: "modal",
-    }}
+    screenOptions={DefaultStyles}
   >
     <Stack.Screen
       name="CategoriesScreen"
       component={CategoriesScreen}
-      options={{
-        headerTitle: "Meal Categories",
+      options={(navigationOptions) => {
+        return {
+          headerTitle: "Meal Categories",
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+              <Item
+                title="Menu"
+                iconName="ios-menu"
+                onPress={() => {
+                  navigationOptions.navigation.toggleDrawer();
+                }}
+              />
+            </HeaderButtons>
+          ),
+        };
       }}
     />
     <Stack.Screen
@@ -88,12 +170,59 @@ const MealsNavigator = () => (
   </Stack.Navigator>
 );
 
+const Drawer = createDrawerNavigator();
+
+const FiltersStackNavigator = () => (
+  <Stack.Navigator screenOptions={DefaultStyles}>
+    <Stack.Screen
+      name="FiltersScreen"
+      component={FiltersScreen}
+      options={(navigationOptions) => {
+        return {
+          headerTitle: "Filter Meals",
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+              <Item
+                title="Menu"
+                iconName="ios-menu"
+                onPress={() => {
+                  navigationOptions.navigation.toggleDrawer();
+                }}
+              />
+            </HeaderButtons>
+          ),
+        };
+      }}
+    />
+  </Stack.Navigator>
+);
+
+const MealsMainSidevarNagigator = () => (
+  <NavigationContainer>
+    <Drawer.Navigator>
+      <Drawer.Screen
+        name="Favorite Meals"
+        component={
+          Platform.OS === "android"
+            ? MealsBottomTabNavigatorAndroid
+            : MealsBottomTabNavigatorIOS
+        }
+      />
+      <Drawer.Screen name="Filter Meals" component={FiltersStackNavigator} />
+    </Drawer.Navigator>
+  </NavigationContainer>
+);
+
 const MealsNavigatorContainer = (props) => {
   return (
     <NavigationContainer>
-      <MealsFavTabNavigator />
+      {Platform.OS === "ios" ? (
+        <MealsBottomTabNavigatorIOS />
+      ) : (
+        <MealsBottomTabNavigatorAndroid />
+      )}
     </NavigationContainer>
   );
 };
 
-export default MealsNavigatorContainer;
+export default MealsMainSidevarNagigator;

@@ -5,7 +5,7 @@ import { AppLoading } from "expo";
 import { enableScreens } from "react-native-screens";
 
 // Navigation
-import MealsNavigator from "./navigation/MealsNavigator";
+import MealsNavigatorContainer from "./navigation/MealsNavigator";
 
 enableScreens();
 
@@ -28,7 +28,7 @@ export default function App() {
     );
   }
 
-  return <MealsNavigator />;
+  return <MealsNavigatorContainer />;
 }
 
 const styles = StyleSheet.create({});
