@@ -112,4 +112,12 @@ and try yarn devtools
 - yarn add @react-navigation/drawer
 - [CreateMaterialTopTabNavigator](https://reactnavigation.org/docs/material-top-tab-navigator/)
 
+### React Docs
+
+- [React in general](https://reactjs.org/docs/getting-started.html)
+
+- [useEffect()](https://reactjs.org/docs/hooks-reference.html#useeffect)
+
+- [useCallback()](https://reactjs.org/docs/hooks-reference.html#usecallback)
+
 # Module 7 (State Management and Redux)
