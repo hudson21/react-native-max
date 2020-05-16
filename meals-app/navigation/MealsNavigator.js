@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -44,6 +44,12 @@ const screenOptions = (route) => ({
   },
   tabBarColor:
     route.name === "Meals" ? Colors.primaryColor : Colors.accentColor, // This one only applies if the shifting on android is true
+  tabBarLabel:
+    Platform.OS === "android" ? (
+      <Text style={{ fontFamily: "open-sans-bold" }}>{route.name}</Text>
+    ) : (
+      route.name
+    ),
 });
 
 const MealsBottomTabNavigatorIOS = () => (
@@ -51,6 +57,9 @@ const MealsBottomTabNavigatorIOS = () => (
     screenOptions={({ route }) => screenOptions(route)}
     tabBarOptions={{
       activeTintColor: Colors.accentColor,
+      labelStyle: {
+        fontFamily: "open-sans-bold",
+      },
     }}
   >
     <Tab.Screen name="Meals" component={MealsStackNavigator} />
@@ -180,6 +189,17 @@ const FiltersStackNavigator = () => (
       options={(navigationOptions) => {
         return {
           headerTitle: "Filter Meals",
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+              <Item
+                title="Save"
+                iconName="ios-save"
+                onPress={() => {
+                  navigationOptions.route.params.save();
+                }}
+              />
+            </HeaderButtons>
+          ),
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
               <Item
@@ -199,16 +219,23 @@ const FiltersStackNavigator = () => (
 
 const MealsMainSidevarNagigator = () => (
   <NavigationContainer>
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerContentOptions={{
+        activeTintColor: Colors.accentColor,
+        labelStyle: {
+          fontFamily: "open-sans",
+        },
+      }}
+    >
       <Drawer.Screen
-        name="Favorite Meals"
+        name="Meals"
         component={
           Platform.OS === "android"
             ? MealsBottomTabNavigatorAndroid
             : MealsBottomTabNavigatorIOS
         }
       />
-      <Drawer.Screen name="Filter Meals" component={FiltersStackNavigator} />
+      <Drawer.Screen name="Filters" component={FiltersStackNavigator} />
     </Drawer.Navigator>
   </NavigationContainer>
 );
