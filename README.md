@@ -111,3 +111,5 @@ and try yarn devtools
 - yarn add @react-navigation/material-bottom-tabs react-native-paper
 - yarn add @react-navigation/drawer
 - [CreateMaterialTopTabNavigator](https://reactnavigation.org/docs/material-top-tab-navigator/)
+
+# Module 7 (State Management and Redux)
