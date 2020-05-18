@@ -1,14 +1,33 @@
 import React from "react";
+import { View, StyleSheet } from "react-native";
 
 // Components
 import MealList from "../components/MealList";
+import DefaultText from "../components/DefaultText";
 
-// Constants
-import { MEALS } from "../data/dummy-data";
+// Redux
+import { useSelector } from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const favMeals = MEALS.filter((meal) => meal.id === "m1" || meal.id === "m2");
-  return <MealList listData={favMeals} navigation={props.navigation} />;
+  const favoriteMeals = useSelector((state) => state.meals.favoriteMeals);
+
+  if (!favoriteMeals.length || !favoriteMeals) {
+    return (
+      <View style={styles.content}>
+        <DefaultText>No favorite meals found. Start adding some!</DefaultText>
+      </View>
+    );
+  }
+
+  return <MealList listData={favoriteMeals} navigation={props.navigation} />;
 };
+
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default FavoritesScreen;

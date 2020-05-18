@@ -121,3 +121,4 @@ and try yarn devtools
 - [useCallback()](https://reactjs.org/docs/hooks-reference.html#usecallback)
 
 # Module 7 (State Management and Redux)
+- yarn add redux react-redux

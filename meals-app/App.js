@@ -7,7 +7,18 @@ import { enableScreens } from "react-native-screens";
 // Navigation
 import MealsNavigatorContainer from "./navigation/MealsNavigator";
 
+// Redux
+import { createStore, combineReducers } from "redux";
+import mealsReducer from "./store/reducers/meals";
+import { Provider } from "react-redux";
+
 enableScreens();
+
+const rootReducer = combineReducers({
+  meals: mealsReducer,
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -28,7 +39,11 @@ export default function App() {
     );
   }
 
-  return <MealsNavigatorContainer />;
+  return (
+    <Provider store={store}>
+      <MealsNavigatorContainer />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({});

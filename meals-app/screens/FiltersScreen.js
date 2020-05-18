@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, StyleSheet, Switch, Platform } from "react-native";
+import { useDispatch } from "react-redux";
+
+// Actions
+import { setFilters } from "../store/actions/meals";
 
 // Constans
 import Colors from "../constants/Colors";
@@ -26,17 +30,19 @@ const FilterScreen = ({ navigation }) => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const dispatch = useDispatch();
+
   // THis function is cached by react and it is only recreated if its dependencies change
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       glutenFree: isGlutenFree,
       lactoseFree: isLactoseFree,
       vegan: isVegan,
-      isVegeratian: isVegetarian,
+      vegeratian: isVegetarian,
     };
 
-    console.log(appliedFilters);
-  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
+    dispatch(setFilters(appliedFilters));
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch]);
 
   useEffect(() => {
     navigation.setParams({ save: saveFilters });
