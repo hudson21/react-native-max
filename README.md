@@ -125,4 +125,4 @@ and try yarn devtools
 - yarn add redux react-redux
 
 # Module 8 (The Shop App)
-- 
+- expo install react-native-gesture-handler react-native-reanimated
