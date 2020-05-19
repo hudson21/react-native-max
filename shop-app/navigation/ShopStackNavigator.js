@@ -4,9 +4,14 @@ import { Platform } from "react-native";
 // Stack Navigator
 import { createStackNavigator } from "@react-navigation/stack";
 
-// Components
+// Screens
 import ProductsOverviewScreen from "../screens/shop/ProductsOverviewScreen";
 import ProductDetailsScreen from "../screens/shop/ProductDetailsScreen";
+import CartScreen from "../screens/shop/CartScreen";
+
+// Buttons
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/UI/HeaderButton";
 
 // Constans
 import Colors from "../constants/Colors";
@@ -19,14 +24,33 @@ const ShopStackNavigator = () => (
       headerStyle: {
         backgroundColor: Platform.OS === "android" ? Colors.primary : "",
       },
+      headerTitleStyle: {
+        fontFamily: "open-sans-bold",
+      },
+      headerBackTitleStyle: {
+        fontFamily: "open-sans",
+      },
       headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
     }}
   >
     <Stack.Screen
       name="ProductsOverviewScreen"
       component={ProductsOverviewScreen}
-      options={{
-        headerTitle: "All Products",
+      options={(navData) => {
+        return {
+          headerTitle: "All Products",
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="Cart"
+                iconName={Platform.OS === "android" ? "md-cart" : "ios-cart"}
+                onPress={() => {
+                  navData.navigation.navigate("CartScreen");
+                }}
+              />
+            </HeaderButtons>
+          ),
+        };
       }}
     />
     <Stack.Screen
@@ -37,6 +61,15 @@ const ShopStackNavigator = () => (
 
         return {
           headerTitle: producTitle,
+        };
+      }}
+    />
+    <Stack.Screen
+      name="CartScreen"
+      component={CartScreen}
+      options={(navData) => {
+        return {
+          headerTitle: "Cart",
         };
       }}
     />
