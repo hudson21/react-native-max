@@ -128,3 +128,6 @@ and try yarn devtools
 
 - expo install react-native-gesture-handler react-native-reanimated
 - If you want to have Redux Devtools in your React Native Project: yarn add --dev redux-devtools-extension
+- yarn add moment
+- [Date.prototype.toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)
+- [Moment Library](https://momentjs.com/docs/#/displaying/format/)

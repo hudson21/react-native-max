@@ -1,5 +1,5 @@
 // Constans
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, ADD_ORDER } from "../actions/constants";
 
 // Models
 import CartItem from "../../models/cart-item";
@@ -41,13 +41,34 @@ const cartReducer = (state = initialState, action) => {
         totalAmount: state.totalAmount + productPrice,
       };
     case REMOVE_FROM_CART:
-      const currentQuantity = state.items[action.productId].quantity;
+      const selectedCartItem = state.items[action.productId];
+      const currentQuantity = selectedCartItem.quantity;
+      let updatedCartItems;
+
       if (currentQuantity > 1) {
         // Need to reduce it. Not to erase it
+        const updatedCartItem = new CartItem(
+          selectedCartItem.quantity - 1,
+          selectedCartItem.productPrice,
+          selectedCartItem.productTitle,
+          selectedCartItem.sum - selectedCartItem.productPrice
+        );
+        updatedCartItems = {
+          ...state.items,
+          [action.productId]: updatedCartItem,
+        };
       } else {
-        const updatedCartItems = { ...state.items };
+        // Here the item will be deleted permanently
+        updatedCartItems = { ...state.items };
         delete updatedCartItems[action.productId];
       }
+      return {
+        ...state,
+        items: updatedCartItems,
+        totalAmount: state.totalAmount - selectedCartItem.productPrice,
+      };
+    case ADD_ORDER:
+      return initialState;
     default:
       return state;
   }

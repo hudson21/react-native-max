@@ -10,13 +10,16 @@ import { Provider } from "react-redux";
 // Reducers
 import productsReducer from "./store/reducers/products";
 import cartReducer from "./store/reducers/cart";
+import ordersReducer from "./store/reducers/orders";
 
 // StackContainer
-import ShopNavigatorContainer from "./navigation/ShopNavigatorContainer";
+//import ShopNavigatorContainer from "./navigation/ShopNavigatorContainer";
+import ShopMainSidevarNagigator from "./navigation/ShopMainSidevarNagigator";
 
 const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
+  orders: ordersReducer,
 });
 
 const store =
@@ -47,7 +50,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <ShopNavigatorContainer />
+      <ShopMainSidevarNagigator />
     </Provider>
   );
 }

@@ -13,32 +13,30 @@ import CartScreen from "../screens/shop/CartScreen";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/UI/HeaderButton";
 
-// Constans
-import Colors from "../constants/Colors";
+// Constants
+import DefaultStyles from "../constants/DefaultStyles";
 
 const Stack = createStackNavigator();
 
 const ShopStackNavigator = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primary : "",
-      },
-      headerTitleStyle: {
-        fontFamily: "open-sans-bold",
-      },
-      headerBackTitleStyle: {
-        fontFamily: "open-sans",
-      },
-      headerTintColor: Platform.OS === "android" ? "white" : Colors.primary,
-    }}
-  >
+  <Stack.Navigator screenOptions={DefaultStyles}>
     <Stack.Screen
       name="ProductsOverviewScreen"
       component={ProductsOverviewScreen}
       options={(navData) => {
         return {
           headerTitle: "All Products",
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="Menu"
+                iconName={Platform.OS === "android" ? "md-menu" : "ios-menu"}
+                onPress={() => {
+                  navData.navigation.toggleDrawer();
+                }}
+              />
+            </HeaderButtons>
+          ),
           headerRight: () => (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
               <Item
@@ -67,10 +65,8 @@ const ShopStackNavigator = () => (
     <Stack.Screen
       name="CartScreen"
       component={CartScreen}
-      options={(navData) => {
-        return {
-          headerTitle: "Cart",
-        };
+      options={{
+        headerTitle: "Your Cart",
       }}
     />
   </Stack.Navigator>
