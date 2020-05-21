@@ -1,5 +1,10 @@
 // Constans
-import { ADD_TO_CART, REMOVE_FROM_CART, ADD_ORDER } from "../actions/constants";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  ADD_ORDER,
+  DELETE_PRODUCT,
+} from "../actions/constants";
 
 // Models
 import CartItem from "../../models/cart-item";
@@ -69,6 +74,19 @@ const cartReducer = (state = initialState, action) => {
       };
     case ADD_ORDER:
       return initialState;
+    case DELETE_PRODUCT:
+      if (!state.items[action.productId]) {
+        return state;
+      }
+      const updatedItems = { ...state.items };
+      // Getting the totalsum of the item to be erased
+      const itemTotal = state.items[action.productId].sum;
+      delete updatedItems[action.productId];
+      return {
+        ...state,
+        items: updatedItems,
+        totalAmount: state.totalAmount - itemTotal,
+      };
     default:
       return state;
   }

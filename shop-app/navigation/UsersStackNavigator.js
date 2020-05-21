@@ -10,6 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 // Screens
 import UserProductsScreen from "../screens/user/UserProductsScreen";
+import EditProductScreen from "../screens/user/EditProductScreen";
 
 // Constants
 import DefaultStyles from "../constants/DefaultStyles";
@@ -32,6 +33,44 @@ const UsersStackNavigator = () => (
                 onPress={() => {
                   navData.navigation.toggleDrawer();
                 }}
+              />
+            </HeaderButtons>
+          ),
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="Add"
+                iconName={
+                  Platform.OS === "android" ? "md-create" : "ios-create"
+                }
+                onPress={() => {
+                  navData.navigation.navigate("EditProductScreen", {
+                    productId: "",
+                  });
+                }}
+              />
+            </HeaderButtons>
+          ),
+        };
+      }}
+    />
+    <Stack.Screen
+      name="EditProductScreen"
+      component={EditProductScreen}
+      options={(navData) => {
+        const submitHandler = navData.route.params.submitHandler;
+        const { productId } = navData.route.params;
+
+        return {
+          headerTitle: productId ? "Edit Product" : "Add Product",
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="Save"
+                iconName={
+                  Platform.OS === "android" ? "md-checkmark" : "ios-checkmark"
+                }
+                onPress={submitHandler}
               />
             </HeaderButtons>
           ),

@@ -31,20 +31,23 @@ const ProductsOverviewScreen = ({ navigation: { navigate } }) => {
           image={itemData.item.imageUrl}
           title={itemData.item.title}
           price={itemData.item.price}
-          onViewDetail={() => {}}
-          onAddToCart={() => {
-            dispatch(cartActions.addToCart(itemData.item));
+          onSelect={() => {
+            selectItemHandler(itemData.item.id, itemData.item.title);
           }}
         >
           <Button
             color={Colors.primary}
             title="View Details"
-            onPress={onViewDetail}
+            onPress={() => {
+              selectItemHandler(itemData.item.id, itemData.item.title);
+            }}
           />
           <Button
             color={Colors.primary}
             title="To Cart"
-            onPress={onAddToCart}
+            onPress={() => {
+              dispatch(cartActions.addToCart(itemData.item));
+            }}
           />
         </ProductItem>
       )}

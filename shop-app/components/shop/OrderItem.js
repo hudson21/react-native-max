@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button } from "react-native";
 
 // Components
 import CartItem from "./CartItem";
+import Card from "../UI/Card";
 
 // Constants
 import Colors from "../../constants/Colors";
@@ -11,7 +12,7 @@ const OrderItem = ({ amount, date, items }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <View style={styles.orderItem}>
+    <Card style={styles.orderItem}>
       <View style={styles.summary}>
         <Text style={styles.totalAmount}>${amount.toFixed(2)}</Text>
         <Text styke={styles.date}>{date}</Text>
@@ -36,21 +37,12 @@ const OrderItem = ({ amount, date, items }) => {
           ))}
         </View>
       )}
-    </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   orderItem: {
-    // Shadow only works for IOS
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    // elevation for Android
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: "white",
     margin: 20,
     padding: 10,
     alignItems: "center",
