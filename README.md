@@ -131,3 +131,11 @@ and try yarn devtools
 - yarn add moment
 - [Date.prototype.toLocaleDateString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString)
 - [Moment Library](https://momentjs.com/docs/#/displaying/format/)
+
+# Module 9 (Handling User Input)
+
+- [Formik Docs](https://jaredpalmer.com/formik/)
+- [Validate.js Docs](https://validatejs.org/)
+- [React useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
+
+# Module 10 (Http Requests & Adding a Web Server + Database)
