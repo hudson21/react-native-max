@@ -139,3 +139,4 @@ and try yarn devtools
 - [React useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
 
 # Module 10 (Http Requests & Adding a Web Server + Database)
+- yarn add redux-thunk

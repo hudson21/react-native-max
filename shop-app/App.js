@@ -4,7 +4,8 @@ import * as Font from "expo-font";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Redux
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
 
 // Reducers
@@ -24,8 +25,8 @@ const rootReducer = combineReducers({
 
 const store =
   process.env.NODE_ENV === "development"
-    ? createStore(rootReducer, composeWithDevTools())
-    : createStore(rootReducer);
+    ? createStore(rootReducer, applyMiddleware(composeWithDevTools, ReduxThunk))
+    : createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
