@@ -139,4 +139,9 @@ and try yarn devtools
 - [React useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
 
 # Module 10 (Http Requests & Adding a Web Server + Database)
+
 - yarn add redux-thunk
+- [Navigation prop reference](https://reactnavigation.org/docs/navigation-prop/)
+- Http Methods:
+  1. PUT will override the entire data
+  2. PATCH will override only the portion which gets changed
