@@ -11,3 +11,8 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const SET_PRODUCTS = "SET_PRODUCTS";
+
+// Auth
+export const AUTHENTICATE = "AUTHENTICATE";
+export const LOGOUT = "LOGOUT";
+export const WEB_API_KEY = "AIzaSyAOICJH5TC1gCk4UFEWQve_ysCI31hDIxE";

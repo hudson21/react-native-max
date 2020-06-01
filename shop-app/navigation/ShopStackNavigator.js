@@ -8,6 +8,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ProductsOverviewScreen from "../screens/shop/ProductsOverviewScreen";
 import ProductDetailsScreen from "../screens/shop/ProductDetailsScreen";
 import CartScreen from "../screens/shop/CartScreen";
+import AuthScreen from "../screens/user/AuthScreen";
+import StartupScreen from "../screens/StartupScreen";
 
 // Buttons
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -20,6 +22,24 @@ const Stack = createStackNavigator();
 
 const ShopStackNavigator = () => (
   <Stack.Navigator screenOptions={DefaultStyles}>
+    <Stack.Screen
+      name="StartupScreen"
+      component={StartupScreen}
+      options={(navData) => {
+        return {
+          headerTitle: "",
+        };
+      }}
+    />
+    <Stack.Screen
+      name="AuthScreen"
+      component={AuthScreen}
+      options={(navData) => {
+        return {
+          headerTitle: "Authenticate",
+        };
+      }}
+    />
     <Stack.Screen
       name="ProductsOverviewScreen"
       component={ProductsOverviewScreen}

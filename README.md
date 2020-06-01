@@ -145,3 +145,8 @@ and try yarn devtools
 - Http Methods:
   1. PUT will override the entire data
   2. PATCH will override only the portion which gets changed
+
+# Module 11 (User Authentication)
+
+- [Firebase Auth Rest API](https://firebase.google.com/docs/reference/rest/auth)
+- expo install expo-linear-gradient

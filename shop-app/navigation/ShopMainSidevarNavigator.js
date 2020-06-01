@@ -12,15 +12,19 @@ import UsersStackNavigator from "./UsersStackNavigator";
 // Constants
 import Colors from "../constants/Colors";
 
+// Customed DrawerOption
+import LogoutDrawerOption from "../components/LogoutDrawerOption";
+
 const Drawer = createDrawerNavigator();
 
 const ordersIcon = Platform.OS === "android" ? "md-list" : "ios-list";
 const cartIcon = Platform.OS === "android" ? "md-cart" : "ios-cart";
 const adminIcon = Platform.OS === "android" ? "md-create" : "ios-create";
 
-const ShopMainSidevarNagigator = () => (
+const ShopMainSidevarNavigator = () => (
   <NavigationContainer>
     <Drawer.Navigator
+      drawerContent={(props) => <LogoutDrawerOption {...props} />}
       screenOptions={(navData) => {
         let icon;
 
@@ -51,4 +55,4 @@ const ShopMainSidevarNagigator = () => (
   </NavigationContainer>
 );
 
-export default ShopMainSidevarNagigator;
+export default ShopMainSidevarNavigator;

@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as productsActions from "../../store/actions/products";
 
 // Components
-import Input from "../../components/UI/input";
+import Input from "../../components/UI/Input";
 
 // Constans
 import Colors from "../../constants/Colors";
