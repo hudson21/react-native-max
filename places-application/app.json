@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "places-app",
-    "slug": "places-app",
+    "name": "places-application",
+    "slug": "places-application",
     "platforms": [
       "ios",
       "android",
