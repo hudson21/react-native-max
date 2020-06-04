@@ -1,13 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+
+// Redux
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import ReduxThunk from "redux-thunk";
 
 // Stack Container
 import PlacesStackNavigator from "./navigation/PlacesStackNavigator";
 
+// Reducers
+import placesReducer from "./store/places-reducer";
+
+const rootReducer = combineReducers({
+  places: placesReducer,
+});
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <PlacesStackNavigator />
+    </Provider>
   );
 }

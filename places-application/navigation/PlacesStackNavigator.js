@@ -1,6 +1,12 @@
 import React from "react";
 import { Platform } from "react-native";
 
+// Components
+import CustomHeaderButton from "../components/CustomHeaderButton";
+
+// Buttons
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+
 // Constans
 import DefaultStyles from "../constants/DefaultStyles";
 
@@ -24,7 +30,18 @@ const PlacesStackNavigator = () => (
         component={PlacesListScreen}
         options={(navData) => {
           return {
-            headerTitle: "PlacesListScreen",
+            headerTitle: "All Places",
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item
+                  title="Add Place"
+                  iconName={Platform.OS === "android" ? "md-add" : "ios-add"}
+                  onPress={() => {
+                    navData.navigation.navigate("NewPlaceScreen");
+                  }}
+                />
+              </HeaderButtons>
+            ),
           };
         }}
       />
@@ -33,7 +50,7 @@ const PlacesStackNavigator = () => (
         component={PlaceDetailScreen}
         options={(navData) => {
           return {
-            headerTitle: "PlaceDetailScreen",
+            headerTitle: navData.route.params.placeTitle,
           };
         }}
       />
@@ -42,12 +59,12 @@ const PlacesStackNavigator = () => (
         component={NewPlaceScreen}
         options={(navData) => {
           return {
-            headerTitle: "NewPlaceScreen",
+            headerTitle: "Add Place",
           };
         }}
       />
       <Stack.Screen
-        name="MapScreen"
+        name="MapScreen" 
         component={MapScreen}
         options={(navData) => {
           return {

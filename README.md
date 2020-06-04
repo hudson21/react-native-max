@@ -155,3 +155,7 @@ and try yarn devtools
 
 # Module 12 (The Places App with Camera, Maps, Location and SQLite Integration)
 
+- Native Functionalities handled by Expo
+  1. [ImagePicker: expo install expo-image-picker](https://docs.expo.io/versions/v37.0.0/sdk/imagepicker/)
+  2. [Permissions on the Device: expo install expo-permissions](https://docs.expo.io/versions/v37.0.0/sdk/permissions/)
+  3. [FileSystem: expo install expo-file-system](https://docs.expo.io/versions/v37.0.0/sdk/filesystem/)
