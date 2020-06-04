@@ -1,5 +1,7 @@
 # Module 1 (Getting Started)
 
+- [Github Commands](https://gitexplorer.com/)
+
 ### What is React Native
 
 - It is a collection of special React Components
@@ -150,3 +152,6 @@ and try yarn devtools
 
 - [Firebase Auth Rest API](https://firebase.google.com/docs/reference/rest/auth)
 - expo install expo-linear-gradient
+
+# Module 12 (The Places App with Camera, Maps, Location and SQLite Integration)
+
