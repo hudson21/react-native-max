@@ -37,7 +37,9 @@ const PlacesStackNavigator = () => (
                   title="Add Place"
                   iconName={Platform.OS === "android" ? "md-add" : "ios-add"}
                   onPress={() => {
-                    navData.navigation.navigate("NewPlaceScreen");
+                    navData.navigation.navigate("NewPlaceScreen", {
+                      pickedLocation: "",
+                    });
                   }}
                 />
               </HeaderButtons>
@@ -64,11 +66,22 @@ const PlacesStackNavigator = () => (
         }}
       />
       <Stack.Screen
-        name="MapScreen" 
+        name="MapScreen"
         component={MapScreen}
         options={(navData) => {
           return {
-            headerTitle: "MapScreen",
+            headerTitle: "Select Your Location",
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item
+                  title="Select Location"
+                  iconName={Platform.OS === "android" ? "md-save" : "ios-save"}
+                  onPress={() => {
+                    navData.route.params.saveLocation();
+                  }}
+                />
+              </HeaderButtons>
+            ),
           };
         }}
       />

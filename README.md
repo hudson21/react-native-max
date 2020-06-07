@@ -155,7 +155,11 @@ and try yarn devtools
 
 # Module 12 (The Places App with Camera, Maps, Location and SQLite Integration)
 
-- Native Functionalities handled by Expo
+- [Native Functionalities handled by Expo](https://docs.expo.io/versions/latest/)
   1. [ImagePicker: expo install expo-image-picker](https://docs.expo.io/versions/v37.0.0/sdk/imagepicker/)
   2. [Permissions on the Device: expo install expo-permissions](https://docs.expo.io/versions/v37.0.0/sdk/permissions/)
   3. [FileSystem: expo install expo-file-system](https://docs.expo.io/versions/v37.0.0/sdk/filesystem/)
+  4. [SQLite Database Functionality](https://docs.expo.io/versions/v37.0.0/sdk/sqlite/)
+  5. [Location](https://docs.expo.io/versions/v37.0.0/sdk/location/)
+  6. [MapView](https://docs.expo.io/versions/v37.0.0/sdk/map-view/)
+- [Google Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro)
