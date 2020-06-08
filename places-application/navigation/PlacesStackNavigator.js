@@ -69,6 +69,13 @@ const PlacesStackNavigator = () => (
         name="MapScreen"
         component={MapScreen}
         options={(navData) => {
+          const readonly = navData.route.params.readonly;
+          if (readonly) {
+            return {
+              headerTitle: "Wath Your Selected Location",
+            };
+          }
+
           return {
             headerTitle: "Select Your Location",
             headerRight: () => (

@@ -39,7 +39,7 @@ export const addPlace = (title, image, location) => {
       throw new Error("Something went wrong!!!");
     }
 
-    const address = resData.results[0].formatted_addres;
+    const address = resData.results[0].formatted_address;
     const fileName = image.split("/").pop(); // It gets the filename by popping up the last index separated in an array by '/'
     const newPath = FileSystem.documentDirectory + fileName;
 

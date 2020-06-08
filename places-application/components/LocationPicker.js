@@ -75,7 +75,10 @@ const LocationPicker = (props) => {
   };
 
   const pickOnMapHandler = () => {
-    props.navigation.navigate("MapScreen");
+    props.navigation.navigate("MapScreen", {
+      readonly: false,
+      initialLocation: "",
+    });
   };
 
   return (
