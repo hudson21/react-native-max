@@ -163,3 +163,18 @@ and try yarn devtools
   5. [Location](https://docs.expo.io/versions/v37.0.0/sdk/location/)
   6. [MapView](https://docs.expo.io/versions/v37.0.0/sdk/map-view/)
 - [Google Maps Static API](https://developers.google.com/maps/documentation/maps-static/intro)
+
+# Module 13 (Building Apps Without Expo)
+
+- [React Native vs Ionic vs Flutter](https://academind.com/learn/flutter/react-native-vs-flutter-vs-ionic-vs-nativescript-vs-pwa/)
+
+### Alternatives to Expo
+
+1. Expo - Managed Workflow(Used in the Course)
+2. Expo - Bare Workflow
+3.
+
+- [Why Not Expo ?](https://docs.expo.io/introduction/why-not-expo/?redirected)
+- [React Native Setup Wihout Expo](https://reactnative.dev/docs/getting-started#installing-dependencies)
+
+# Module 14 (Publishing React Native Apps)
