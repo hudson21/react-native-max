@@ -178,3 +178,49 @@ and try yarn devtools
 - [React Native Setup Wihout Expo](https://reactnative.dev/docs/getting-started#installing-dependencies)
 
 # Module 14 (Publishing React Native Apps)
+
+### Deployment Steps
+
+1. Test and Polish Code
+2. Configure App/Deployment (e.g name, identifier)
+3. Add Icons and Splash Screen
+4. Build and Deploy
+
+### Expo Apps vs Non-Expo Apps
+
+- Expo(Managed)
+  1. Configure via app.json, automatic asset creation
+  2. expo publish
+  3. expo build:android/build:ios
+  4. Over the Air Updates
+- Non-Expo
+  1. Configure manually
+  2. Build via Android Studio/XCode
+  3. No built-in OTA Updates
+
+### Deploying places-app
+
+- [Configuring app.json in an Expo App](https://docs.expo.io/workflow/configuration/)
+
+1. In the Root Project: expo publish
+2. Configuring Icons and the Splash Screen (See app.json in your expo project)
+   - Provide an Icon of 1024x1024
+   - [Recommendations for App Icons](https://docs.expo.io/guides/app-icons/?redirected)
+   - [Recommentations for Splash Screens](https://docs.expo.io/guides/splash-screens/?redirected)
+   - [Decide which part of the bundle should be kept locally instead of being uploaded to the Expo Servers](https://docs.expo.io/guides/offline-support/?redirected)
+3. Using Over the Air Updates (OTA)
+4. expo build:android -t app-bundle and expo build:ios
+5. Once the build is done run expo fetch:android:keystore
+6. expo upload:android
+
+### Useful Resources
+As shown earlier in the course (when adding native modules to non-Expo apps), you can manage certain aspects of your Android app with the AndroidManifest.xml file.
+There, you can configure three important things:
+
+- The App name as it appears on the home screen: https://stackoverflow.com/questions/5443304/how-to-change-an-android-apps-name
+
+- The bundle identifier & package name of the app (also requires tweaking in other files): https://developer.android.com/studio/build/application-id
+
+- The permissions of the app: https://developer.android.com/guide/topics/manifest/manifest-intro#perms
+
+You should also set an app version and change it with every app update. This is done in the build.gradle file, see: https://developer.android.com/studio/publish/versioning
